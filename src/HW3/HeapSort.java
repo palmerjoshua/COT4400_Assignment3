@@ -2,8 +2,7 @@ package HW3;
 
 public class HeapSort {
 
-
-    public static void heapSort(int[] arr) {
+    public static void sort(int[] arr) {
         buildMaxHeap(arr);
         for (int i = heapSize; i > 0; i--) {
             exchange(arr, 0, i);
@@ -54,8 +53,9 @@ public class HeapSort {
     public static void main(String[] args) {
         int[] arr = {1,4,3,6,5,8,7,4,6,8,0,3,6,7,4,8};
         printArray(arr);
-        heapSort(arr);
+        sort(arr);
         printArray(arr);
     }
+
     private static int heapSize;
 }

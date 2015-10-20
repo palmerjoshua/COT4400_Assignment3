@@ -2,55 +2,43 @@ package HW3;
 
 public class MergeSort {
 
-    private static void mergeSort(int[] arr, int p, int r) {
-        if (p < r) {
-            double b = (p+r) / 2;
-            int q = (int)Math.floor(b);
-            mergeSort(arr, p, q);
-            mergeSort(arr, q+1, r);
-            merge(arr, p, q, r);
-        }
-        return;
-    }
-
-    public static void mergeSort(int[] arr) {
+    public static void sort(int[] arr) {
         mergeSort(arr, 0, arr.length-1);
     }
 
-    private static void merge(int[] arr, int p, int q, int r) {
-        int n1 = (q - p) + 1;
-        int n2 = r - q;
-        int[] left = new int[n1+1];
-        int[] right = new int[n2+1];
-        int i, j, b, d;
-        for (i = 0; i < n1; i++) {
-            b = p + i;
-            d = arr[b];
-            left[i] = d;
+    private static void mergeSort(int[] arr, int first, int last) {
+        if (first < last) {
+            int middle = (int)Math.floor((first+last) / 2);
+            mergeSort(arr, first, middle);
+            mergeSort(arr, middle+1, last);
+            merge(arr, first, middle, last);
         }
-        for (j = 0; j < n2; j++) {
-            d = arr[q+j];
-            right[j] = d;
-        }
-        left[n1] = Integer.MAX_VALUE;
-        right[n2] = Integer.MAX_VALUE;
-        i = j = 0;
-        for (int k = p; k <= r; k++) {
-            if (left[i] <= right[j]) {
-                arr[k] = left[i];
-                i += 1;
+    }
+
+    private static void merge(int[] arr, int first, int middle, int last) {
+        int[] copy = arr.clone();
+        int i = first, j = middle+1, k = first;
+        while (i <= middle && j <= last) {
+            if (copy[i] <= copy[j]) {
+                arr[k] = copy[i];
+                i++;
             } else {
-                arr[k] = right[j];
-                j += 1;
+                arr[k] = copy[j];
+                j++;
             }
+            k++;
         }
-        return;
+        while ( i <= middle) {
+            arr[k] = copy[i];
+            k++;
+            i++;
+        }
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,4,3,6,5,8,7,4,6,8,0,3,6,7,4,8};
+        int[] arr = {3,2,7,4,8,5,1};
         HeapSort.printArray(arr);
-        mergeSort(arr);
+        sort(arr);
         HeapSort.printArray(arr);
     }
 }
