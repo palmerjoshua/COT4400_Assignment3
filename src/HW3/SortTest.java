@@ -33,11 +33,11 @@ public class SortTest extends TestCase {
         assertArrayEquals(EXPECTED, result);
     }
 
-    /*
+
     public void testMergeSort() throws Exception {
         int[] result = ORIGINAL.clone();
-        MergeSort.mergeSort(result, 0, result.length-1);
+        MergeSort.mergeSort(result);
         assertArrayEquals(EXPECTED, result);
-    }*/
+    }
 
 }
