@@ -25,10 +25,18 @@ public class SorterTableModel extends AbstractTableModel {
         return getValueAt(0, columnIndex).getClass();
     }
 
+    public Object[] getColumn(int index) {
+        Object[] column = new Object[20];
+        for (int i=0; i<20; i++) {
+            column[i] = data[i][index];
+        }
+        return column;
+    }
+
     public void addData(Object[][] rowData) {
         data = rowData.clone();
     }
 
-    private final String[] columnNames = {"Array Size", "Theoretical RT (microseconds)", "Simulated RT (microseconds)", "Hidden Cost"};
-    private Object[][] data = new Object[20][4];
+    private final String[] columnNames = {"Array Size", "Theoretical RT (ms)", "Simulated RT (ms)", "Constant"};
+    private Object[][] data = new Object[21][4];
 }
