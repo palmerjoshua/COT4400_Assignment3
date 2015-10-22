@@ -14,11 +14,4 @@ public class InsertionSort {
             arr[i+1] = key;
         }
     }
-
-    public static void main(String[] args) {
-        int[] arr = {1,4,3,6,5,8,7,4,6,8,0,3,6,7,4,8};
-        HeapSort.printArray(arr);
-        sort(arr);
-        HeapSort.printArray(arr);
-    }
 }

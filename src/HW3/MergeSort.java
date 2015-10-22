@@ -34,11 +34,4 @@ public class MergeSort {
             i++;
         }
     }
-
-    public static void main(String[] args) {
-        int[] arr = {3,2,7,4,8,5,1};
-        HeapSort.printArray(arr);
-        sort(arr);
-        HeapSort.printArray(arr);
-    }
 }
